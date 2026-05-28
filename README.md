@@ -1,0 +1,1 @@
+# shiko-course-details-provider
