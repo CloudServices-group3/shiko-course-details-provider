@@ -23,9 +23,13 @@ builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(policy =>
     {
-        policy.AllowAnyOrigin()
-              .AllowAnyMethod()
-              .AllowAnyHeader();
+        policy
+            .WithOrigins(
+                "http://localhost:3000",
+                "https://shiko-frontend-silk.vercel.app"
+            )
+            .AllowAnyMethod()
+            .AllowAnyHeader();
     });
 });
 
@@ -157,6 +161,7 @@ app.UseSwaggerUI();
 app.UseCors();
 
 app.UseHttpsRedirection();
+
 app.MapControllers();
 
 app.Run();
