@@ -18,6 +18,7 @@ builder.Services.AddDbContext<CourseDetailsDbContext>(options =>
         )
     ));
 
+// CORS FOR VERCEL
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(policy =>
@@ -139,6 +140,7 @@ using (var scope = app.Services.CreateScope())
                     }
                 }
             );
+
             db.SaveChanges();
         }
     }
@@ -151,7 +153,9 @@ using (var scope = app.Services.CreateScope())
 app.UseSwagger();
 app.UseSwaggerUI();
 
+// USE CORS
 app.UseCors();
+
 app.UseHttpsRedirection();
 app.MapControllers();
 
